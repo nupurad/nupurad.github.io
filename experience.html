@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+    }
+
+    .heading {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .heading h1 {
+      font-size: 3rem;
+      transition: 0.6s;
+      color: #fff;
+    }
+
+    .heading h1:hover {
+      color: rgb(0,179,134);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: rgb(0,179,134);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      z-index: -1;
+    }
+
+    .container {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      animation: movedown 1s ease forwards;
+    }
+
+    @keyframes movedown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container:nth-child(1) { animation-delay: 0s; }
+    .container:nth-child(2) { animation-delay: 1s; }
+    .container:nth-child(3) { animation-delay: 2s; }
+
+    .left-container {
+      left: 0;
+    }
+
+    .right-container {
+      left: 50%;
+    }
+
+    .container img {
+      position: absolute;
+      width: 60px;
+      border-radius: 50%;
+      top: 30px;
+      border: 3px solid rgb(0,179,134);
+      background: #fff;
+      z-index: 2;
+    }
+
+    .left-container img {
+      right: -30px;
+    }
+
+    .right-container img {
+      left: -30px;
+    }
+
+    .text-box {
+      background: #111;
+      color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,179,134, 0.3);
+      position: relative;
+    }
+
+    .text-box h3 {
+      color: rgb(0,179,134);
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .text-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .text-box small {
+      display: inline-block;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+
+    .text-box p {
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    .left-container-arrow,
+    .right-container-arrow {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 30px;
+      border: 10px solid transparent;
+      z-index: 1;
+    }
+
+    .left-container-arrow {
+      border-left: 10px solid #111;
+      right: -10px;
+    }
+
+    .right-container-arrow {
+      border-right: 10px solid #111;
+      left: -10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 30px;
+      }
+
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        left: 0 !important;
+      }
+
+      .container img {
+        left: 10px;
+        right: auto;
+      }
+
+      .left-container-arrow,
+      .right-container-arrow {
+        left: -10px;
+        border-left: 0;
+        border-right: 10px solid #111;
+      }
+    }
+
+    nav {
+  display: flex;
+  justify-content: space-between;  /* logo on left, menu on right */
+  align-items: center;
+  padding: 0 8%;
+  height: 80px;
+  color: #fff;
+  position: relative;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;            /* reduced from 50px */
+  height: 40px;
+  background-color: rgb(0,179,134);
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;        /* slightly smaller text */
+  border-radius: 50%;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-logo a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgb(0,179,134);
+}
+
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+ul li {
+  margin: 0 25px;
+}
+
+ul li a {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 17px;
+  transition: 0.6s;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: rgb(0,179,134);
+}
+
+.bars {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="nav-logo">
+            <a href="index.html">ND</a>
+          </div>
+          <ul>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+          <div class="bars"><i class="bx bx-menu"></i></div>
+        </nav>
+      </header>
+      
+  <div class="heading">
+    <h1>Professional Experience</h1>
+  </div>
+
+  <div class="timeline">
+    <div class="container left-container">
+      <img src="images/mtu.png" alt="MTU Logo">
+      <div class="text-box">
+        <h3>Data Analyst Intern</h3>
+        <h2>Rolls Royce Power Systems AG</h2>
+        <small>January 2024 - June 2024</small>
+        <p>
+          Conducted research on and generated a machine learning model that attempts to predict the 
+          life (predictive maintenance) of diesel engine component using sensor-based time-series 
+          data obtained using MATLAB software. Employed data cleaning techniques and Regression analyses; 
+          presented findings to senior management and associates.
+        </p>
+        <span class="left-container-arrow"></span>
+      </div>
+    </div>
+
+    <div class="container right-container">
+      <img src="images/ricoz.png" alt="ricoZ Logo">
+      <div class="text-box">
+        <h3>UI Design Intern</h3>
+        <h2>ricoZ</h2>
+        <small>March 2024 - May 2024</small>
+        <p>
+          Worked on designing UI for web and app projects, collaborated with backend developers to ensure seamless integration and an intuitive user experience.
+        </p>
+        <span class="right-container-arrow"></span>
+      </div>
+    </div>
+
+    <div class="container left-container">
+      <img src="images/persistent.png" alt="Persistent Logo">
+      <div class="text-box">
+        <h3>Summer Intern</h3>
+        <h2>Persistent Systems</h2>
+        <small>June 2023 - August 2023</small>
+        <p>
+          Completed training on core subjects like Data Structures, Operating Systems, and DBMS. Built Python implementations for Stack, Queue, Graph, and Linked List as part of coding assignments.
+        </p>
+        <span class="left-container-arrow"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 2rem;
+      transition: 0.6s;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .heading:hover {
+      color: rgb(0, 179, 134);
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    .swiper-container {
+      padding: 0; /* important! no horizontal padding */
+      overflow: visible;
+      position: relative;
+    }
+    
+    .swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  top: 50%;                        /* Center vertically in swiper container */
+  transform: translateY(-50%);     /* Ensure actual vertical center */
+  z-index: 1000;
+}
+
+.swiper-button-next {
+  right: -5px;
+}
+
+.swiper-button-prev {
+  left: -5px;
+}
+
+
+    .card {
+      background-color: #111;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 179, 134, 0.3);
+  text-align: center;
+  margin: 10px;
+  height: 420px; /* Reduced from 500px */
+  width: 280px;  /* Optional: slightly slimmer */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+    }
+
+    .card h5 {
+      color: #000;
+      background-color: rgb(0, 179, 134);
+      border-radius: 10px;
+      font-size: 1rem; /* reduced slightly */
+      margin-bottom: 0.5rem;
+      padding: 0.8rem;
+    }
+
+    .card small {
+      color: #bbb;
+      font-size: 0.9rem;
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    .card p {
+      text-align: justify;
+      color: #ddd;
+      font-size: 0.85rem;
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .read-more {
+      font-size: 0.9rem;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .read-more:hover {
+      background-color: rgb(0, 179, 134);
+      color: #000;
+    }
+
+    nav {
+  display: flex;
+  justify-content: space-between;  /* logo on left, menu on right */
+  align-items: center;
+  padding: 0 8%;
+  height: 80px;
+  color: #fff;
+  position: relative;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;            /* reduced from 50px */
+  height: 40px;
+  background-color: rgb(0,179,134);
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;        /* slightly smaller text */
+  border-radius: 50%;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-logo a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgb(0,179,134);
+}
+
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+ul li {
+  margin: 0 25px;
+}
+
+ul li a {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 17px;
+  transition: 0.6s;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: rgb(0,179,134);
+}
+
+.bars {
+  display: none;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-logo">
+        <a href="index.html">ND</a>
+      </div>
+      <ul>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+      <div class="bars"><i class="bx bx-menu"></i></div>
+    </nav>
+  </header>
+  
+  <div class="heading">Publications</div>
+  <div class="swiper swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <h5>An Efficient IoT-Blockchain Sharding Technique using Frequently Transacting Sender and Receiver Information</h5>
+          <small>June 2024</small>
+          <p>
+            Presented a blockchain sharding technique for IoT applications that groups frequently 
+            transacting sender-receiver pairs to reduce inter-shard communication and improve efficiency. 
+            Experimental results on the SocialChain blockchain show about a 10% execution time reduction 
+            and sustained TPS improvements, highlighting its scalability benefits.
+          </p>
+          <a href="https://ieeexplore.ieee.org/abstract/document/10543556" target="_blank">
+            <button class="read-more">Read More</button>
+          </a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <h5>Designing a Machine Learning-Based Intelligent Indoor Navigation System for people with Physical Disabilities</h5>
+          <small>December 2023</small>
+          <p>
+            Developed a machine learning-based intelligent indoor navigation system specifically designed to aid 
+            individuals with physical disabilities in complex indoor environments. Leveraged computer vision 
+            and natural language processing to provide personalized, accessible routes and voice-guided navigation, 
+            enhancing user independence and mobility.
+          </p>
+          <a href="https://drive.google.com/file/d/1R9gdriEmfBE4ugkAWzkeujBnxhv4yvjw/view" target="_blank">
+            <button class="read-more">Read More</button>
+          </a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <h5>Artificial Intelligence Application in Personalized Fintech</h5>
+          <small>October 2023</small>
+          <p>
+            Researched into integrating artificial intelligence into personalized fintech to enhance 
+            personal finance management. Proposed the use of machine learning, deep learning, and cognitive 
+            computing to offer features like expense tracking, fraud detection, and tailored investment 
+            recommendations while prioritizing data privacy and customer-centric design.
+          </p>
+          <a href="https://drive.google.com/file/d/1zR3-RB47IEuZ2iWXHcajs-1olScrrqQz/view" target="_blank">
+            <button class="read-more">Read More</button>
+          </a>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <h5>[Blog] Automatic Essay Scoring Systems</h5>
+          <small>October 2023</small>
+          <p>
+            Reviewed the evolution and methodologies of Automatic Essay Scoring systems, which aim to 
+            address the challenges of manual essay evaluation, such as bias and inefficiency. AES systems 
+            leverage advanced technologies like transformer models (e.g., BERT, RoBERTa), feature 
+            extraction techniques, word embeddings and LSTM architectures to assess essays based on 
+            multiple factors. 
+          </p>
+          <a href="https://medium.com/@nupurdashputre/automatic-essay-scoring-systems-2873bc98a96a" target="_blank">
+            <button class="read-more">Read More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+  const swiper = new Swiper('.swiper-container', {
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  centeredSlides: false,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+  </script>
+</body>
+
+</html>
