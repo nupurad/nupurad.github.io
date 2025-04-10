@@ -255,6 +255,85 @@ button:hover{
       grid-template-columns: repeat(2, 1fr); /* 2 per row on small screens */
     }
   }
+
+  /* Hide menu on small screens and show hamburger */
+@media screen and (max-width: 768px) {
+  .Menu {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    gap: 15px;
+    padding: 20px 0;
+  }
+
+  .Menu.active {
+    display: flex;
+  }
+
+  .bars {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(0,179,134);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .client_info {
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+  }
+
+  .text_content p {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .image_content {
+    margin: 20px 0;
+  }
+
+  .container h1 {
+    font-size: 36px;
+  }
+
+  .text_content h2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .icon li {
+    margin: 15px;
+  }
+
+  .contact-heading {
+    font-size: 2rem;
+  }
+
+  .contact-subtext {
+    font-size: 1rem;
+  }
+}
+
+.image_content img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
   
   .skill-box {
     background-color: #111; /* dark card background */
