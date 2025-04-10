@@ -102,18 +102,6 @@ body{
     display: none;
   }
   
-  
-
-.client_info {
-    display: flex;
-    flex-direction: row; /* horizontal layout */
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: relative;
-    top: 70px;
-    margin-left: 120px;
-    gap: 50px; /* space between text and image */
-}
 
 .container{
     width: 100%;
@@ -139,14 +127,6 @@ body{
     color: #fff;
     font-size: 40px;
     margin: 10px 0;
-}
-
-.text_content p {
-    color: #fff;
-    width: 700px;
-    line-height: 20px;
-    text-align: justify;
-    font-size: 13px;
 }
 
 .image_content {
@@ -291,11 +271,6 @@ button:hover{
     align-items: center;
   }
 
-  .text_content p {
-    width: 100%;
-    font-size: 14px;
-  }
-
   .image_content {
     margin: 20px 0;
   }
@@ -327,13 +302,6 @@ button:hover{
     font-size: 1rem;
   }
 }
-
-.image_content img {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
-}
-
   
   .skill-box {
     background-color: #111; /* dark card background */
@@ -439,3 +407,97 @@ button:hover{
   .contact-item a:hover {
     color: rgb(0,179,134);
   }
+
+  /* Sidebar Styles */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: rgb(0,179,134);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+#sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+#sidebar .sidebar-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: rgb(0,179,134);
+  padding: 20px;
+  font-size: 20px;
+}
+
+#sidebar .sidebar-header span {
+  cursor: pointer;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sidebar ul li {
+  padding: 15px;
+}
+
+#sidebar ul li a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+  color: rgb(0,179,134);
+}
+
+/* Show hamburger icon only on mobile */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar, .Menu {
+    display: none;
+  }
+
+  .client_info {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .image_content img {
+    max-width: 200px;
+  }
+
+  .text_content {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .text_content p {
+    width: 100%;
+  }
+}
