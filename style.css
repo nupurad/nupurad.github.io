@@ -102,6 +102,37 @@ body{
   display: none;
 }
 
+@media screen and (max-width: 768px) {
+  .client_info {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 20px;
+    top: 50px;
+  }
+
+  .text_content p {
+    width: 90%;
+    text-align: justify;
+  }
+
+  .container h1 {
+    font-size: 40px;
+  }
+
+  .text_content h2 {
+    font-size: 28px;
+  }
+
+  .image_content {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  button {
+    margin: 20px auto;
+  }
+}
 
 
 .client_info {
@@ -364,4 +395,36 @@ color: rgb(0, 255, 179);
 }
 .contact .icon li a i:hover{
   color: rgb(0,179,134);
+}
+
+/* Sidebar styles for mobile */
+@media screen and (max-width: 768px) {
+  .Menu {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    background-color: #000;
+    width: 100%;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 998;
+  }
+
+  .Menu.active {
+    left: 0;
+  }
+
+  .bars {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
