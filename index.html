@@ -22,7 +22,7 @@
       </div>
   
       <!-- Nav Links -->
-      <ul class="Menu">
+      <ul class="Menu" id="nav-menu">
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="300"><a href="experience.html">Experience</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200"><a href="projects.html">Projects</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400"><a href="publications.html">Publications</a></li>
@@ -31,7 +31,7 @@
       </ul>
   
       <!-- Optional burger -->
-      <div class="bars">
+      <div class="bars" id="menu-toggle">
         <i class="fa-solid fa-bars"></i>
       </div>
     </nav>
@@ -177,5 +177,15 @@
             looped: true
         });
     </script>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
+
 </body>
 </html>
