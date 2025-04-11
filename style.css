@@ -166,24 +166,6 @@ body{
   box-shadow: 5px 5px 0 rgb(0,179,134);
 }
 
-.icon{
-  display: flex;
-  list-style: none;
-}
-
-.icon li {
-  display: inline;
-  margin: 30px 25px;
-}
-
-.icon li a i{
-  font-size: 20px;
-  transition: .3s;
-}
-.icon li a i:hover{
-  color: rgb(0,179,134);
-}
-
 button{
   width: 150px;
   height: 40px;
@@ -196,8 +178,9 @@ button{
   position: relative;
   transition: .6s;
   overflow: hidden;
-  margin-top: 5px;
+  margin-top: 30px;
 }
+
 button::after{
   position: absolute;
   content: "";
@@ -208,6 +191,7 @@ button::after{
   width: 100%;
   transition: .7s;
 }
+
 button:hover::after{
   top: 100%;
 }
@@ -223,6 +207,7 @@ button:hover{
   text-align: center;
   color: #fff;
   font-size: 2rem;
+  margin-top: 10px;
 }
 
 .inner .header .h3{
@@ -257,7 +242,7 @@ font-size: 1rem;
 }
 
 .skill-box {
-  background-color: #111; /* dark card background */
+background-color: #111; /* dark card background */
 padding: 2rem;
 border-radius: 20px;
 color: #fff;
@@ -358,5 +343,25 @@ color: rgb(0, 255, 179);
 }
 
 .contact-item a:hover {
+  color: rgb(0,179,134);
+}
+
+.contact .icon{
+  display: flex;
+  list-style: none;
+  margin-top: 30px;
+  margin-left: 490px;
+}
+
+.contact .icon li {
+  display: inline;
+  margin: 20px;
+}
+
+.contact .icon li a i{
+  font-size: 20px;
+  transition: .3s;
+}
+.contact .icon li a i:hover{
   color: rgb(0,179,134);
 }
