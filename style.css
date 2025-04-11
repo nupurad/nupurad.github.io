@@ -377,11 +377,18 @@ color: rgb(0, 255, 179);
   color: rgb(0,179,134);
 }
 
-.contact .icon{
-  display: flex;
-  list-style: none;
-  margin-top: 30px;
-  margin-left: 490px;
+@media screen and (max-width: 768px) {
+  .contact .icon {
+    justify-content: center;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .contact .icon li {
+    display: inline;
+    margin: 10px;
+  }
 }
 
 .contact .icon li {
