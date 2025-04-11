@@ -134,69 +134,6 @@ body{
   }
 }
 
-
-.client_info {
-  display: flex;
-  flex-direction: row; /* horizontal layout */
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-  top: 70px;
-  margin-left: 120px;
-  gap: 50px; /* space between text and image */
-}
-
-.container{
-  width: 100%;
-  display: flex;
-}
-
-.container h1{
-  color: #fff;
-  font-size: 75px;
-}
-
-.container span{
-  color: rgb(0,179,134);
-}
-
-.text_content h1 {
-  color: #fff;
-  font-size: 30px;
-  margin: 10px 0;
-}
-
-.text_content h2 {
-  color: #fff;
-  font-size: 40px;
-  margin: 10px 0;
-}
-
-.text_content p {
-  color: #fff;
-  width: 700px;
-  line-height: 20px;
-  text-align: justify;
-  font-size: 13px;
-}
-
-.image_content {
-  margin-left: 40px; 
-  margin-top: 30px;
-}
-
-.image_content img {
-  width: 250px;
-  height: auto;
-  border-radius: 15px;
-  object-fit: cover;
-  transition: .6s;
-}
-
-.image_content img:hover{
-  box-shadow: 5px 5px 0 rgb(0,179,134);
-}
-
 button{
   width: 150px;
   height: 40px;
