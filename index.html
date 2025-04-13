@@ -20,14 +20,9 @@
       <div class="nav-logo" data-aos="zoom-in" data-aos-duration="1500">
         <a href="index.html">ND</a>
       </div>
-
-      <!-- Hamburger -->
-      <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
-      </div>
   
       <!-- Nav Links -->
-      <ul class="nav-menu">
+      <ul class="Menu" id="nav-menu">
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="300"><a href="experience.html">Experience</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200"><a href="projects.html">Projects</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400"><a href="publications.html">Publications</a></li>
@@ -184,8 +179,8 @@
     </script>
 
 <script>
-  const menuToggle = document.getElementById('mobile-menu');
-  const navMenu = document.querySelector('.nav-menu');
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
   menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
