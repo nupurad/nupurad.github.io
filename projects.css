@@ -46,7 +46,20 @@
 
   .card-content p a { 
     text-decoration: none;
-}
+  }
+
+  .card-content a {
+      text-decoration: none;
+  }
+
+  .card-content p {
+      text-decoration: none;
+  }
+
+
+  .card-content h5 a { 
+      text-decoration: none;
+  }
   
   .card-content {
     padding: 16px;
