@@ -28,6 +28,11 @@
     margin-top: 50px;
     gap: 30px;
   }
+
+  .a :hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgb(0,179,134);
+  }
   
   .card {
     width: 325px;
