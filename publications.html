@@ -175,99 +175,6 @@ ul li a:hover {
 .bars {
   display: none;
 }
-
-/* ===== RESPONSIVE NAV & CARDS ===== */
-
-/* Mobile navigation: show hamburger and hide desktop menu */
-@media screen and (max-width: 900px) {
-  ul {
-    display: none; /* hide desktop menu */
-    position: absolute;
-    top: 80px;
-    right: 2%;
-    background: #0b0b0b;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    flex-direction: column;
-    gap: 12px;
-    z-index: 999;
-  }
-
-  ul.active {
-    display: flex;
-  }
-
-  .bars {
-    display: block;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1.2rem;
-    border: none;
-    background: transparent;
-    padding: 0;
-  }
-
-  nav {
-    padding: 0 6%;
-    height: 70px;
-  }
-}
-
-/* Responsive card layout and swiper */
-@media screen and (max-width: 768px) {
-  .heading {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .heading {
-    font-size: 1.5rem;
-  }
-
-  .card {
-    width: 90%;
-    height: auto;
-  }
-
-  .card h5 {
-    font-size: 0.9rem;
-  }
-
-  .card small {
-    font-size: 0.8rem;
-  }
-
-  .card p {
-    font-size: 0.8rem;
-  }
-
-  ul li {
-    margin: 0 12px;
-  }
-
-  ul li a {
-    font-size: 0.95rem;
-  }
-
-  nav {
-    padding: 0 4%;
-  }
-}
  
   </style>
 </head>
@@ -277,16 +184,14 @@ ul li a:hover {
       <div class="nav-logo">
         <a href="index.html">ND</a>
       </div>
-      <ul id="nav-menu">
+      <ul>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="index.html#contact">Contact</a></li>
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
-      <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <i class="bx bx-menu" aria-hidden="true"></i>
-      </button>
+      <div class="bars"><i class="bx bx-menu"></i></div>
     </nav>
   </header>
   
@@ -390,36 +295,7 @@ ul li a:hover {
       slidesPerView: 3,
     },
   },
-  });
-
-  // Menu toggle functionality
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  function toggleMenu() {
-    const isOpen = navMenu.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }
-
-  menuToggle.addEventListener('click', toggleMenu);
-
-  // allow keyboard activation (space/enter) for accessibility
-  menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMenu();
-    }
-  });
-
-  // close menu when a link is clicked (mobile)
-  document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
+});
   </script>
 </body>
 
