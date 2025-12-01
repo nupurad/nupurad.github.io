@@ -10,6 +10,18 @@
 body{
   background-color: #000;
 }
+.root,
+html{
+  /* base font sizing -- scales well across devices */
+  font-size: 16px;
+}
+
+/* Make all images responsive by default */
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 .header_section{
   background: url();
   background-size: cover;
@@ -102,6 +114,37 @@ body{
   display: none;
 }
 
+/* Mobile navigation: show hamburger and hide desktop menu */
+@media screen and (max-width: 900px) {
+  .Menu {
+    display: none; /* hide desktop menu */
+    position: absolute;
+    top: 70px;
+    right: 8%;
+    background: #0b0b0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .Menu.active {
+    display: flex;
+  }
+
+  .bars {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding: 16px 6%;
+  }
+}
+
 
 
 .client_info {
@@ -115,6 +158,36 @@ body{
   gap: 50px; /* space between text and image */
 }
 
+/* Stack the client info on smaller screens */
+@media screen and (max-width: 768px) {
+  .client_info {
+    flex-direction: column-reverse; /* text first, image after */
+    margin-left: 0;
+    padding: 2rem 6%;
+    top: 30px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .text_content p {
+    width: auto;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .image_content img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container h1{font-size: clamp(1.25rem, 6vw, 2.25rem);} 
+  .text_content h2{font-size: 1.5rem;}
+  .contact-heading{font-size: 1.75rem;}
+  button{width: 140px;height:38px;font-size:0.95rem}
+}
+
 .container{
   width: 100%;
   display: flex;
@@ -122,7 +195,8 @@ body{
 
 .container h1{
   color: #fff;
-  font-size: 75px;
+  /* fluid heading size */
+  font-size: clamp(2rem, 5vw, 4.5rem);
 }
 
 .container span{
@@ -144,7 +218,8 @@ body{
 .text_content p {
   color: #fff;
   width: 700px;
-  line-height: 20px;
+  max-width: 65ch;
+  line-height: 1.6;
   text-align: justify;
   font-size: 16px;
 }
@@ -157,6 +232,7 @@ body{
 .image_content img {
   width: 250px;
   height: 250px;
+  max-width: 100%;
   border-radius: 15px;
   object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -240,6 +316,12 @@ font-size: 1rem;
 @media screen and (max-width: 600px) {
   .skill-container {
     grid-template-columns: repeat(2, 1fr); /* 2 per row on small screens */
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .skill-container {
+    grid-template-columns: 1fr; /* stack on very small screens */
   }
 }
 
@@ -352,7 +434,8 @@ color: rgb(0, 255, 179);
   display: flex;
   list-style: none;
   margin-top: 30px;
-  margin-left: 490px;
+  justify-content: center;
+  gap: 12px;
 }
 
 .contact .icon li {

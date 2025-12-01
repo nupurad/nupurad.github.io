@@ -237,6 +237,91 @@ ul li a:hover {
   display: none;
 }
 
+/* ===== RESPONSIVE NAV & TIMELINE ===== */
+
+/* Mobile navigation: show hamburger and hide desktop menu */
+@media screen and (max-width: 900px) {
+  ul {
+    display: none; /* hide desktop menu */
+    position: absolute;
+    top: 80px;
+    right: 2%;
+    background: #0b0b0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+  }
+
+  ul.active {
+    display: flex;
+  }
+
+  .bars {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  nav {
+    padding: 0 6%;
+    height: 70px;
+  }
+}
+
+/* Responsive timeline: stack on mobile */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 30px;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 25px;
+  }
+
+  .left-container,
+  .right-container {
+    left: 0;
+  }
+
+  .container img {
+    width: 50px;
+    left: 0;
+  }
+
+  .heading h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .heading h1 {
+    font-size: 1.5rem;
+  }
+
+  .timeline {
+    margin: 40px auto;
+  }
+
+  ul li {
+    margin: 0 12px;
+  }
+
+  ul li a {
+    font-size: 0.95rem;
+  }
+}.bars {
+  display: none;
+}
+
   </style>
 </head>
 <body>
@@ -245,14 +330,16 @@ ul li a:hover {
           <div class="nav-logo">
             <a href="index.html">ND</a>
           </div>
-          <ul>
+          <ul id="nav-menu">
             <li><a href="experience.html">Experience</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="publications.html">Publications</a></li>
             <li><a href="index.html#contact">Contact</a></li>
             <li><a href="gallery.html">Gallery</a></li>
           </ul>
-          <div class="bars"><i class="bx bx-menu"></i></div>
+          <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="bx bx-menu" aria-hidden="true"></i>
+          </button>
         </nav>
       </header>
       
@@ -323,5 +410,35 @@ ul li a:hover {
       </div>
     </div>
   </div>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    function toggleMenu() {
+      const isOpen = navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // allow keyboard activation (space/enter) for accessibility
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    // close menu when a link is clicked (mobile)
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

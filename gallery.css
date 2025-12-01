@@ -126,3 +126,100 @@ ul li a:hover {
 .bars {
   display: none;
 }
+
+/* ===== RESPONSIVE NAV & GALLERY ===== */
+
+/* Mobile navigation: show hamburger and hide desktop menu */
+@media screen and (max-width: 900px) {
+  ul {
+    display: none; /* hide desktop menu */
+    position: absolute;
+    top: 80px;
+    right: 3%;
+    background: #0b0b0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+  }
+
+  ul.active {
+    display: flex;
+  }
+
+  .bars {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  nav {
+    padding: 0 6%;
+    height: 70px;
+  }
+}
+
+/* Responsive gallery: adjust grid for mobile */
+@media screen and (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .v-stretch,
+  .h-stretch,
+  .big-stretch {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+
+  .text {
+    font-size: 1.5rem;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+  }
+
+  .v-stretch,
+  .h-stretch,
+  .big-stretch {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+
+  ul li {
+    margin: 0 12px;
+  }
+
+  ul li a {
+    font-size: 0.95rem;
+  }
+
+  nav {
+    padding: 0 4%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+
+  .text {
+    font-size: 1.25rem;
+  }
+}
