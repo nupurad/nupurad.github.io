@@ -1,212 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
+  <div id="particles-js"></div>
   <div class="header_section">
     <nav class="navbar">
       <!-- ND Logo -->
       <div class="nav-logo" data-aos="zoom-in" data-aos-duration="1500">
         <a href="index.html">ND</a>
       </div>
-  
+
       <!-- Nav Links -->
       <ul class="Menu" id="nav-menu">
-        <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="300"><a href="experience.html">Experience</a></li>
+        <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="300"><a href="experience.html">Experience</a>
+        </li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200"><a href="projects.html">Projects</a></li>
-        <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400"><a href="publications.html">Publications</a></li>
+        <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400"><a
+            href="publications.html">Publications</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="500"><a href="#contact">Contact</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="600"><a href="gallery.html">Gallery</a></li>
       </ul>
-  
+
       <!-- Optional burger -->
       <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
     </nav>
-  
-        <div class="client_info">
-            <div class="text_content">
-                <div class="container">
-                    <h1>I'm a <span class="auto-type"></span></h1>
-                </div>
-                <h2>Nupur Dashputre</h2>
-                <p>
-                    Hi there! I'm Nupur — a curious coder, data detective, and AI enthusiast currently pursuing my 
-                    Master’s in Computer Science (Data Science track) at University of Southern California. I love 
-                    bringing data to life — whether it’s building machine learning models, creating insightful 
-                    dashboards, or experimenting with AI to solve real-world problems. I thrive at the intersection 
-                    of data, logic, and creativity. I'm currently on the lookout for exciting internship 
-                    opportunities and new grad roles where I can build, innovate, and make data-driven impact. 
-                    Outside the world of code, you’ll probably find me with a camera in hand, capturing life one 
-                    frame at a time. Let’s build something awesome together!
-                </p>
-                <a href="Nupur_Resume_Portfolio.pdf" target="_blank"><button>VIEW RESUME</button></a>
-            </div>
-        
-            <div class="image_content">
-                <img src="images/pfp.jpg" alt="Nupur's Photo">
-            </div>
-        </div>
 
-        <div class="inner">
-            <div class="header">
-              <h3>Skills</h3>
-            </div>
-          
-            <div class="skill-container">
-                <div class="skill-box">
-                    <div class="skill-title">
-                      <img src="images\python.png" alt="C++" class="skill-icon">
-                      <h3>Python</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <img src="images\c++.png" alt="C++" class="skill-icon">
-                      <h3>C++</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <img src="images\java.png" alt="Java" class="skill-icon">
-                      <h3>Java</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <i class="devicon-mysql-plain colored skill-icon"></i>
-                      <h3>MySQL</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <i class="devicon-tensorflow-original colored skill-icon"></i>
-                      <h3>TensorFlow</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <i class="devicon-pytorch-original colored skill-icon"></i>
-                      <h3>PyTorch</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <i class="devicon-react-original colored skill-icon"></i>
-                      <h3>React</h3>
-                    </div>
-                  </div>
-
-                  <div class="skill-box">
-                    <div class="skill-title">
-                        <img src="images/js.png" alt="JavaScript" class="skill-icon" />
-                      <h3>JavaScript</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                      <i class="devicon-mongodb-plain colored skill-icon"></i>
-                      <h3>MongoDB</h3>
-                    </div>
-                  </div>
-                  
-                  <div class="skill-box">
-                    <div class="skill-title">
-                        <img src="images/huggingface-color.svg" alt="HuggingFace" class="skill-icon" />
-                      <h3>HuggingFace</h3>
-                    </div>
-                  </div>                  
-            </div>
-              
+    <div class="client_info">
+      <div class="text_content">
+        <div class="container">
+          <h1>I'm a <span class="auto-type"></span></h1>
         </div>
+        <h2>Nupur Dashputre</h2>
+        <p>
+          Hi there, I'm Nupur! A Master's Computer Science student at University of Southern California,
+          I am passionate about building software solutions that directly impact the lives of consumers,
+          integrating AI where it adds real value.
+        </p>
+        <a href="Nupur_Resume_Portfolio.pdf" target="_blank"><button>VIEW RESUME</button></a>
+      </div>
 
-        <section class="contact" id="contact">
-          <div class="contact-container">
-            <h2 class="contact-heading">Let's Connect!</h2>
-            <p class="contact-subtext">Feel free to reach out to me via email 📩 </p> 
-        
-            <div class="contact-info">
-              <div class="contact-item">
-                <i class="bx bx-envelope"></i>
-                <a href="mailto:nupur.personal@example.com">nupurdashputre@gmail.com</a>
-              </div>
-              <div class="contact-item">
-                <i class="bx bx-envelope"></i>
-                <a href="mailto:nupur.work@example.com">dashputr@usc.edu</a>
-              </div>
-            </div>
-          </div>
-          <div class="icon">
-            <li><a href="https://www.linkedin.com/in/nupur-dashputre/"><i class="fa-brands fa-linkedin"></i></a></li>
-            <li><a href="https://github.com/nupurad"><i class="fa-brands fa-github"></i></a></li>
-            <li><a href="https://x.com/dashputr"><i class="fa-brands fa-x-twitter"></i></a></li>
-            <li><a href="https://www.instagram.com/nupur.ad?igsh=MzRlODBiNWFlZA=="><i class="fa-brands fa-instagram"></i></a></li>
-        </div>
-        </section>        
-  
+
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/aos/2.3.4/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <div class="inner">
+      <div class="header">
+        <h3>Skills</h3>
+      </div>
 
-    <script>
-        var typed = new Typed(".auto-type", {
-            strings: ['Programmer', 'Data Enthusiast', 'Problem Solver', 'Developer'],
-            typeSpeed: 100,
-            backSpeed: 90,
-            looped: true
-        });
-    </script>
+      <div class="skill-container">
+        <div class="skill-box">
+          <div class="skill-title">
+            <img src="images\python.png" alt="C++" class="skill-icon">
+            <h3>Python</h3>
+          </div>
+        </div>
 
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+        <div class="skill-box">
+          <div class="skill-title">
+            <img src="images\c++.png" alt="C++" class="skill-icon">
+            <h3>C++</h3>
+          </div>
+        </div>
 
-  function toggleMenu() {
-    const isOpen = navMenu.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }
+        <div class="skill-box">
+          <div class="skill-title">
+            <img src="images\java.png" alt="Java" class="skill-icon">
+            <h3>Java</h3>
+          </div>
+        </div>
 
-  menuToggle.addEventListener('click', toggleMenu);
+        <div class="skill-box">
+          <div class="skill-title">
+            <i class="devicon-mysql-plain colored skill-icon"></i>
+            <h3>MySQL</h3>
+          </div>
+        </div>
 
-  // allow keyboard activation (space/enter) for accessibility
-  menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMenu();
+        <div class="skill-box">
+          <div class="skill-title">
+            <i class="devicon-tensorflow-original colored skill-icon"></i>
+            <h3>TensorFlow</h3>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-title">
+            <i class="devicon-pytorch-original colored skill-icon"></i>
+            <h3>PyTorch</h3>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-title">
+            <i class="devicon-react-original colored skill-icon"></i>
+            <h3>React</h3>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-title">
+            <img src="images/js.png" alt="JavaScript" class="skill-icon" />
+            <h3>JavaScript</h3>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-title">
+            <i class="devicon-mongodb-plain colored skill-icon"></i>
+            <h3>MongoDB</h3>
+          </div>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-title">
+            <img src="images/huggingface-color.svg" alt="HuggingFace" class="skill-icon" />
+            <h3>HuggingFace</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <h2 class="contact-heading">Let's Connect!</h2>
+        <p class="contact-subtext">Feel free to reach out to me via email 📩 </p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="bx bx-envelope"></i>
+            <a href="mailto:nupur.personal@example.com">nupurdashputre@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="bx bx-envelope"></i>
+            <a href="mailto:nupur.work@example.com">dashputr@usc.edu</a>
+          </div>
+        </div>
+      </div>
+      <div class="icon">
+        <li><a href="https://www.linkedin.com/in/nupur-dashputre/"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="https://github.com/nupurad"><i class="fa-brands fa-github"></i></a></li>
+        <li><a href="https://x.com/dashputr"><i class="fa-brands fa-x-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/nupur.ad?igsh=MzRlODBiNWFlZA=="><i
+              class="fa-brands fa-instagram"></i></a></li>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/aos/2.3.4/aos.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+  <script>
+    /* Particles.js Config */
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#00b386"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00b386",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 4,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    /* Vanilla Tilt Init */
+    VanillaTilt.init(document.querySelectorAll(".skill-box"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.5,
+    });
+  </script>
+
+  <script>
+    var typed = new Typed(".auto-type", {
+      strings: ['Programmer', 'Data Enthusiast', 'Problem Solver', 'Developer'],
+      typeSpeed: 100,
+      backSpeed: 90,
+      looped: true
+    });
+  </script>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    function toggleMenu() {
+      const isOpen = navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
-  });
 
-  // close menu when a link is clicked (mobile)
-  document.querySelectorAll('.Menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // allow keyboard activation (space/enter) for accessibility
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
       }
     });
-  });
-</script>
+
+    // close menu when a link is clicked (mobile)
+    document.querySelectorAll('.Menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
 
 </body>
+
 </html>

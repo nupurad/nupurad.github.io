@@ -1,32 +1,41 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   color: #fff;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
-body{
+body {
   background-color: #000;
 }
+
 .root,
-html{
+html {
   /* base font sizing -- scales well across devices */
   font-size: 16px;
 }
 
 /* Make all images responsive by default */
-img{
+img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-.header_section{
-  background: url();
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 0;
+}
+
+.header_section {
+  background: radial-gradient(circle at 50% 40%, rgba(0, 179, 134, 0.15) 0%, #000 70%);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 80%;
   min-height: 100vh;
   animation: fade 1s forwards ease;
   opacity: 1;
@@ -35,30 +44,29 @@ img{
   position: relative;
   z-index: 1;
 }
-.header_section::after{
+
+.header_section::after {
   position: absolute;
   content: "";
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: -1;
 }
 
-@keyframes fade{
-  100%{
-      opacity: 1;
+@keyframes fade {
+  100% {
+    opacity: 1;
   }
 }
 
 .header_section {
   width: 100%;
-  background-color: #000;
-  border-bottom: 2px solid rgb(0,179,134);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar {
@@ -68,6 +76,15 @@ img{
   padding: 20px 8%;
   max-width: 1200px;
   margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 100%;
 }
 
 .nav-logo a {
@@ -76,7 +93,7 @@ img{
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: rgb(0,179,134);
+  background-color: rgb(0, 179, 134);
   color: #000;
   font-weight: bold;
   font-size: 16px;
@@ -88,7 +105,7 @@ img{
 
 .nav-logo a:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgb(0,179,134);
+  box-shadow: 0 0 10px rgb(0, 179, 134);
 }
 
 .Menu {
@@ -107,7 +124,7 @@ img{
 }
 
 .Menu li a:hover {
-  color: rgb(0,179,134);
+  color: rgb(0, 179, 134);
 }
 
 .bars {
@@ -117,14 +134,15 @@ img{
 /* Mobile navigation: show hamburger and hide desktop menu */
 @media screen and (max-width: 900px) {
   .Menu {
-    display: none; /* hide desktop menu */
+    display: none;
+    /* hide desktop menu */
     position: absolute;
     top: 70px;
     right: 8%;
     background: #0b0b0b;
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     flex-direction: column;
     gap: 12px;
   }
@@ -149,132 +167,114 @@ img{
 
 .client_info {
   display: flex;
-  flex-direction: row; /* horizontal layout */
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  top: 70px;
-  margin-left: 120px;
-  gap: 50px; /* space between text and image */
+  /* Centering on screen accounting for navbar */
+  min-height: 80vh;
+  margin-left: 0;
+  gap: 30px;
+  text-align: center;
+  padding: 0 20px;
 }
 
-/* Stack the client info on smaller screens */
+/* Cleaned up unused image query */
 @media screen and (max-width: 768px) {
   .client_info {
-    flex-direction: column-reverse; /* text first, image after */
-    margin-left: 0;
     padding: 2rem 6%;
-    top: 30px;
     gap: 20px;
-    align-items: center;
-  }
-
-  .text_content p {
-    width: auto;
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .image_content img {
-    width: 200px;
-    height: 200px;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .container h1{font-size: clamp(1.25rem, 6vw, 2.25rem);} 
-  .text_content h2{font-size: 1.5rem;}
-  .contact-heading{font-size: 1.75rem;}
-  button{width: 140px;height:38px;font-size:0.95rem}
+  .container h1 {
+    font-size: clamp(1.25rem, 6vw, 2.25rem);
+  }
+
+  .text_content h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-heading {
+    font-size: 1.75rem;
+  }
+
+  button {
+    width: 140px;
+    height: 38px;
+    font-size: 0.95rem
+  }
 }
 
-.container{
+.container {
   width: 100%;
   display: flex;
 }
 
-.container h1{
+.container h1 {
   color: #fff;
   /* fluid heading size */
   font-size: clamp(2rem, 5vw, 4.5rem);
 }
 
-.container span{
-  color: rgb(0,179,134);
+.container span {
+  color: rgb(0, 179, 134);
+  text-shadow: 0 0 10px rgba(0, 179, 134, 0.5);
 }
 
 .text_content h1 {
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   margin: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 300;
 }
 
 .text_content h2 {
-  color: #fff;
-  font-size: 40px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin: 10px 0;
+  background: linear-gradient(to right, #fff, #00b386);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
 }
 
 .text_content p {
-  color: #fff;
+  color: #ccc;
   width: 100%;
-  max-width: 65ch;
-  line-height: 1.6;
-  text-align: justify;
-  font-size: 16px;
+  max-width: 800px;
+  line-height: 1.8;
+  text-align: center;
+  font-size: 18px;
+  margin: 0 auto;
 }
 
-.image_content {
-  margin-left: 40px; 
-  margin-top: 30px;
-}
+/* Removed unused image_content styles */
 
-.image_content img {
-  width: 250px;
-  height: 250px;
-  max-width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 8px rgba(0, 255, 179, 0.05);
-}
-
-.image_content img:hover{
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 179, 0.2);
-}
-
-button{
-  width: 150px;
-  height: 40px;
+button {
+  width: 160px;
+  height: 48px;
   background-color: transparent;
   color: #fff;
-  margin: 15px;
-  cursor: pointer;
-  border: 2px solid #fff;
-  box-shadow: 0px 0px 0 rgb(0,179,134);
-  position: relative;
-  transition: .6s;
-  overflow: hidden;
   margin-top: 30px;
+  cursor: pointer;
+  border: 1px solid rgb(0, 179, 134);
+  border-radius: 50px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(0, 179, 134, 0.2);
 }
 
-button::after{
-  position: absolute;
-  content: "";
-  top: -100%;
-  left: 0%;
-  background-color: rgb(0,179,134);
-  height: 100%;
-  width: 100%;
-  transition: .7s;
-}
-
-button:hover::after{
-  top: 100%;
-}
-button:hover{
-  box-shadow: 5px 5px 0 rgb(0,179,134);
+button:hover {
+  background-color: rgb(0, 179, 134);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 179, 134, 0.6);
+  transform: translateY(-2px);
 }
 
 .inner {
@@ -288,62 +288,67 @@ button:hover{
   margin-top: 10px;
 }
 
-.inner .header .h3{
+.inner .header .h3 {
   transition: .6s;
 }
 
-.inner .header .h3:hover{
+.inner .header .h3:hover {
   color: rgb(0, 179, 134);
 }
 
 
 .skill-container {
   display: grid;
-grid-template-columns: repeat(5, 1fr); /* 5 columns */
-gap: 2rem;
-justify-items: center;
-padding: 2rem 5%;
-font-size: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  /* 5 columns */
+  gap: 2rem;
+  justify-items: center;
+  padding: 2rem 5%;
+  font-size: 1rem;
 }
 
 /* Responsive adjustment for smaller screens */
 @media screen and (max-width: 1024px) {
   .skill-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row on tablets */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 per row on tablets */
   }
 }
 
 @media screen and (max-width: 600px) {
   .skill-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on small screens */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 per row on small screens */
   }
 }
 
 @media screen and (max-width: 400px) {
   .skill-container {
-    grid-template-columns: 1fr; /* stack on very small screens */
+    grid-template-columns: 1fr;
+    /* stack on very small screens */
   }
 }
 
 .skill-box {
-background-color: #111; /* dark card background */
-padding: 2rem;
-border-radius: 20px;
-color: #fff;
-width: 100%;
-max-width: 160px;
-height: 160px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-box-shadow: 0 0 8px rgba(0, 255, 179, 0.05);
+  background-color: #111;
+  /* dark card background */
+  padding: 2rem;
+  border-radius: 20px;
+  color: #fff;
+  width: 100%;
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 179, 0.05);
 }
 
 .skill-box:hover {
   transform: translateY(-5px) scale(1.03);
-box-shadow: 0 0 20px rgba(0, 255, 179, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 179, 0.2);
 }
 
 .skill-title {
@@ -364,8 +369,8 @@ box-shadow: 0 0 20px rgba(0, 255, 179, 0.2);
 
 .skill-title h3 {
   font-size: 1rem;
-margin-top: 0.5rem;
-color: rgb(0, 255, 179);
+  margin-top: 0.5rem;
+  color: rgb(0, 255, 179);
 }
 
 .contact {
@@ -374,7 +379,7 @@ color: rgb(0, 255, 179);
   color: #fff;
   padding: 80px 20px;
   text-align: center;
-  border-top: 2px solid rgb(0,179,134);
+  border-top: 2px solid rgb(0, 179, 134);
 }
 
 .contact-container {
@@ -389,7 +394,7 @@ color: rgb(0, 255, 179);
 }
 
 .contact-heading:hover {
-  color: rgb(0,179,134);
+  color: rgb(0, 179, 134);
 }
 
 .contact-subtext {
@@ -415,7 +420,7 @@ color: rgb(0, 255, 179);
 }
 
 .contact-item i {
-  color: rgb(0,179,134);
+  color: rgb(0, 179, 134);
   font-size: 1.5rem;
 }
 
@@ -427,10 +432,10 @@ color: rgb(0, 255, 179);
 }
 
 .contact-item a:hover {
-  color: rgb(0,179,134);
+  color: rgb(0, 179, 134);
 }
 
-.contact .icon{
+.contact .icon {
   display: flex;
   list-style: none;
   margin-top: 30px;
@@ -443,10 +448,11 @@ color: rgb(0, 255, 179);
   margin: 20px;
 }
 
-.contact .icon li a i{
+.contact .icon li a i {
   font-size: 20px;
   transition: .3s;
 }
-.contact .icon li a i:hover{
-  color: rgb(0,179,134);
+
+.contact .icon li a i:hover {
+  color: rgb(0, 179, 134);
 }
