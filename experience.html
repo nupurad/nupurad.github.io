@@ -245,14 +245,16 @@ ul li a:hover {
           <div class="nav-logo">
             <a href="index.html">ND</a>
           </div>
-          <ul>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-          </ul>
-          <div class="bars"><i class="bx bx-menu"></i></div>
+          <ul id="nav-menu">
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+          <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" style="background:none; border:none;">
+        <i class="bx bx-menu" style="color:#fff; font-size: 2rem;"></i>
+      </button>
         </nav>
       </header>
       
@@ -323,5 +325,25 @@ ul li a:hover {
       </div>
     </div>
   </div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  function toggleMenu() {
+    const isOpen = navMenu.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // allow keyboard activation (space/enter) for accessibility
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+</script>
 </body>
 </html>

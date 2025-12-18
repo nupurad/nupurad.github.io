@@ -217,7 +217,7 @@ img{
 
 .text_content p {
   color: #fff;
-  width: 700px;
+  width: 100%;
   max-width: 65ch;
   line-height: 1.6;
   text-align: justify;
