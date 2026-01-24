@@ -68,12 +68,19 @@ body {
 
 .animal {
     position: absolute;
-    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
     transform: translate(-50%, -50%);
     transition: top 2s linear, left 2s linear;
     /* Smooth movement */
     cursor: pointer;
-    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+    /* Sticker look */
+    background: white;
+    border-radius: 15px;
+    padding: 2px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .animal.bounce {

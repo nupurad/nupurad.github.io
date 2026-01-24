@@ -7,7 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const animals = ['🐈', '🐕', '🐿️', '🐑', '🐇', '🐢', '🦆', '🐖'];
+    const animals = [
+        'images/animal-cat.png',
+        'images/animal-dog.png',
+        'images/animal-sheep.png',
+        'images/animal-fox.png'
+    ];
     let activeAnimals = [];
 
     // Spawn animal on click
@@ -20,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function spawnAnimal(x, y) {
-        const type = animals[Math.floor(Math.random() * animals.length)];
-        const animalEl = document.createElement('div');
+        const src = animals[Math.floor(Math.random() * animals.length)];
+        const animalEl = document.createElement('img');
+        animalEl.src = src;
         animalEl.classList.add('animal');
-        animalEl.textContent = type;
 
         // Initial Position
         animalEl.style.left = x + 'px';
