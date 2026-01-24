@@ -456,3 +456,84 @@ button:hover {
 .contact .icon li a i:hover {
   color: rgb(0, 179, 134);
 }
+
+/* --- Fun Zone / Game Section --- */
+.fun-zone {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #050505;
+  border-top: 1px solid rgba(0, 179, 134, 0.2);
+}
+
+.fun-zone h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.fun-zone p {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  margin: 0 auto;
+  background: #000;
+  border: 2px solid rgb(0, 179, 134);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 179, 134, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-target {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgb(0, 179, 134);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  cursor: pointer;
+  transition: transform 0.1s;
+  box-shadow: 0 0 10px rgb(0, 179, 134);
+  z-index: 5;
+}
+
+.game-target:active {
+  transform: scale(0.9);
+}
+
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.game-overlay h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: rgb(0, 179, 134);
+}
+
+.score-board {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.score-board span {
+  color: rgb(0, 179, 134);
+}

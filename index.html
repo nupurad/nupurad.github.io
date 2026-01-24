@@ -53,9 +53,11 @@
         </div>
         <h2>Nupur Dashputre</h2>
         <p>
-          Hi there, I'm Nupur! A Master's Computer Science student at University of Southern California,
-          I am passionate about building software solutions that directly impact the lives of consumers,
-          integrating AI where it adds real value.
+          Hi there, I'm an MSCS student at University of Southern California.
+          I'm passionate about analyzing and building scalable backend solutions and deploying them on the cloud.
+          Through internships, projects and some self-exploration, I have worked with Node.js, Express, Java-Spring
+          Boot, Flask, Kafka, AWS and GCP.
+          When I'm not coding, you'll probably find me taking a lot too many sky pictures!
         </p>
         <a href="my-resume.pdf" target="_blank"><button>VIEW RESUME</button></a>
       </div>
@@ -71,17 +73,12 @@
       <div class="skill-container">
         <div class="skill-box">
           <div class="skill-title">
-            <img src="images\python.png" alt="C++" class="skill-icon">
+            <img src="images\python.png" alt="Python" class="skill-icon">
             <h3>Python</h3>
           </div>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-title">
-            <img src="images\c++.png" alt="C++" class="skill-icon">
-            <h3>C++</h3>
-          </div>
-        </div>
+
 
         <div class="skill-box">
           <div class="skill-title">
@@ -92,17 +89,14 @@
 
         <div class="skill-box">
           <div class="skill-title">
-            <i class="devicon-mysql-plain colored skill-icon"></i>
-            <h3>MySQL</h3>
+            <i class="devicon-spring-plain colored skill-icon"></i>
+            <h3>Spring Boot</h3>
           </div>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-title">
-            <i class="devicon-tensorflow-original colored skill-icon"></i>
-            <h3>TensorFlow</h3>
-          </div>
-        </div>
+
+
+
 
         <div class="skill-box">
           <div class="skill-title">
@@ -148,7 +142,7 @@
 
         <div class="skill-box">
           <div class="skill-title">
-            <i class="devicon-amazonwebservices-original colored skill-icon"></i>
+            <i class="devicon-amazonwebservices-plain-wordmark colored skill-icon"></i>
             <h3>AWS</h3>
           </div>
         </div>
@@ -174,15 +168,26 @@
           </div>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-title">
-            <i class="devicon-typescript-plain colored skill-icon"></i>
-            <h3>TypeScript</h3>
-          </div>
-        </div>
+
       </div>
 
     </div>
+
+    <!-- Fun Zone Section -->
+    <section class="fun-zone" id="fun-zone">
+      <h2 data-aos="fade-down" data-aos-duration="1000">Fun Zone: Starlight Catcher</h2>
+      <p data-aos="fade-up" data-aos-duration="1000">I love sky pictures! Can you catch 10 stars before time runs out?
+      </p>
+
+      <div class="game-area" id="game-area">
+        <div class="game-overlay" id="game-overlay">
+          <h3 id="game-msg">Ready?</h3>
+          <button onclick="startGame()">START GAME</button>
+        </div>
+      </div>
+
+      <div class="score-board">Score: <span id="score">0</span> | Time: <span id="timer">30</span>s</div>
+    </section>
 
     <section class="contact" id="contact">
       <div class="contact-container">
@@ -372,6 +377,97 @@
     });
   </script>
 
+  <script>
+    /* Starlight Catcher Game Logic */
+    let score = 0;
+    let timeLeft = 30;
+    let gameInterval;
+    let spawnInterval;
+    let isPlaying = false;
+    const gameArea = document.getElementById('game-area');
+    const scoreDisplay = document.getElementById('score');
+    const timerDisplay = document.getElementById('timer');
+    const overlay = document.getElementById('game-overlay');
+    const gameMsg = document.getElementById('game-msg');
+
+    function startGame() {
+      if (isPlaying) return;
+      isPlaying = true;
+      score = 0;
+      timeLeft = 30;
+      scoreDisplay.textContent = score;
+      timerDisplay.textContent = timeLeft;
+      overlay.style.display = 'none';
+
+      // Clear any existing stars
+      const existingStars = document.querySelectorAll('.game-target');
+      existingStars.forEach(s => s.remove());
+
+      gameInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          endGame(false);
+        }
+      }, 1000);
+
+      spawnInterval = setInterval(spawnStar, 600); // Spawn a star every 600ms
+    }
+
+    function spawnStar() {
+      if (!isPlaying) return;
+
+      const star = document.createElement('div');
+      star.classList.add('game-target');
+
+      // Random position
+      const maxX = gameArea.clientWidth - 40;
+      const maxY = gameArea.clientHeight - 40;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      star.style.left = x + 'px';
+      star.style.top = y + 'px';
+
+      // Star click handler
+      star.addEventListener('click', () => {
+        if (!isPlaying) return;
+        score++;
+        scoreDisplay.textContent = score;
+        star.remove();
+
+        // Win condition
+        if (score >= 10) {
+          endGame(true);
+        }
+      });
+
+      gameArea.appendChild(star);
+
+      // Remove star after 1.5 seconds if not clicked
+      setTimeout(() => {
+        if (star.parentNode) {
+          star.remove();
+        }
+      }, 1500);
+    }
+
+    function endGame(won) {
+      isPlaying = false;
+      clearInterval(gameInterval);
+      clearInterval(spawnInterval);
+
+      overlay.style.display = 'flex';
+      if (won) {
+        gameMsg.textContent = "You Won! 🎉 Great reflexes!";
+        gameMsg.style.color = "rgb(0, 179, 134)";
+      } else {
+        gameMsg.textContent = "Time's Up! 😞 Try again?";
+        gameMsg.style.color = "#ff4444";
+      }
+    }
+  </script>
 </body>
 
 </html>
