@@ -73,8 +73,7 @@ body {
     height: 80px;
     object-fit: contain;
     transform: translate(-50%, -50%);
-    transition: top 2s linear, left 2s linear;
-    /* Smooth movement */
+    /* Movement handled by JS frame loop now */
     cursor: pointer;
     /* Removed sticker background as requested */
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
