@@ -38,6 +38,7 @@
             href="publications.html">Publications</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="500"><a href="#contact">Contact</a></li>
         <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="600"><a href="gallery.html">Gallery</a></li>
+        <li data-aos="fade-down" data-aos-duration="2000" data-aos-delay="700"><a href="game.html">Fun Zone</a></li>
       </ul>
 
       <!-- Optional burger -->
@@ -173,21 +174,7 @@
 
     </div>
 
-    <!-- Fun Zone Section -->
-    <section class="fun-zone" id="fun-zone">
-      <h2 data-aos="fade-down" data-aos-duration="1000">Fun Zone: Starlight Catcher</h2>
-      <p data-aos="fade-up" data-aos-duration="1000">I love sky pictures! Can you catch 10 stars before time runs out?
-      </p>
 
-      <div class="game-area" id="game-area">
-        <div class="game-overlay" id="game-overlay">
-          <h3 id="game-msg">Ready?</h3>
-          <button onclick="startGame()">START GAME</button>
-        </div>
-      </div>
-
-      <div class="score-board">Score: <span id="score">0</span> | Time: <span id="timer">30</span>s</div>
-    </section>
 
     <section class="contact" id="contact">
       <div class="contact-container">
@@ -377,97 +364,7 @@
     });
   </script>
 
-  <script>
-    /* Starlight Catcher Game Logic */
-    let score = 0;
-    let timeLeft = 30;
-    let gameInterval;
-    let spawnInterval;
-    let isPlaying = false;
-    const gameArea = document.getElementById('game-area');
-    const scoreDisplay = document.getElementById('score');
-    const timerDisplay = document.getElementById('timer');
-    const overlay = document.getElementById('game-overlay');
-    const gameMsg = document.getElementById('game-msg');
 
-    function startGame() {
-      if (isPlaying) return;
-      isPlaying = true;
-      score = 0;
-      timeLeft = 30;
-      scoreDisplay.textContent = score;
-      timerDisplay.textContent = timeLeft;
-      overlay.style.display = 'none';
-
-      // Clear any existing stars
-      const existingStars = document.querySelectorAll('.game-target');
-      existingStars.forEach(s => s.remove());
-
-      gameInterval = setInterval(() => {
-        timeLeft--;
-        timerDisplay.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          endGame(false);
-        }
-      }, 1000);
-
-      spawnInterval = setInterval(spawnStar, 600); // Spawn a star every 600ms
-    }
-
-    function spawnStar() {
-      if (!isPlaying) return;
-
-      const star = document.createElement('div');
-      star.classList.add('game-target');
-
-      // Random position
-      const maxX = gameArea.clientWidth - 40;
-      const maxY = gameArea.clientHeight - 40;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      star.style.left = x + 'px';
-      star.style.top = y + 'px';
-
-      // Star click handler
-      star.addEventListener('click', () => {
-        if (!isPlaying) return;
-        score++;
-        scoreDisplay.textContent = score;
-        star.remove();
-
-        // Win condition
-        if (score >= 10) {
-          endGame(true);
-        }
-      });
-
-      gameArea.appendChild(star);
-
-      // Remove star after 1.5 seconds if not clicked
-      setTimeout(() => {
-        if (star.parentNode) {
-          star.remove();
-        }
-      }, 1500);
-    }
-
-    function endGame(won) {
-      isPlaying = false;
-      clearInterval(gameInterval);
-      clearInterval(spawnInterval);
-
-      overlay.style.display = 'flex';
-      if (won) {
-        gameMsg.textContent = "You Won! 🎉 Great reflexes!";
-        gameMsg.style.color = "rgb(0, 179, 134)";
-      } else {
-        gameMsg.textContent = "Time's Up! 😞 Try again?";
-        gameMsg.style.color = "#ff4444";
-      }
-    }
-  </script>
 </body>
 
 </html>

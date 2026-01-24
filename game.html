@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Zone - Cosmic Dodge</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="header_section game-header">
+        <nav class="navbar">
+            <!-- ND Logo -->
+            <div class="nav-logo">
+                <a href="index.html">ND</a>
+            </div>
+
+            <!-- Nav Links -->
+            <ul class="Menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="game.html" class="active">Fun Zone</a></li>
+            </ul>
+
+            <!-- Optional burger -->
+            <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"
+                style="background:none; border:none; cursor: pointer;">
+                <i class="bx bx-menu" style="color:#fff; font-size: 2rem;"></i>
+            </button>
+        </nav>
+    </div>
+
+    <div class="game-container">
+        <h1 class="game-title">Cosmic Dodge</h1>
+        <p class="game-subtitle">Navigate your glowing orb through the asteroid field. Use your mouse or orbit!<br>Don't
+            hit the red asteroids!</p>
+
+        <div id="canvas-container">
+            <canvas id="gameCanvas"></canvas>
+            <div id="ui-layer">
+                <div id="start-screen">
+                    <h2>Ready to Launch?</h2>
+                    <p>Move mouse to control</p>
+                    <button id="start-btn">Start Mission</button>
+                </div>
+                <div id="game-over-screen" style="display: none;">
+                    <h2>Mission Failed</h2>
+                    <p>Score: <span id="final-score">0</span></p>
+                    <button id="restart-btn">Try Again</button>
+                </div>
+                <div id="hud">
+                    Score: <span id="score">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        /* Mobile Menu Toggle Logic (Same as other pages) */
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        function toggleMenu() {
+            const isOpen = navMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // allow keyboard activation (space/enter) for accessibility
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
