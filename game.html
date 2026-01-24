@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Zone - Cosmic Dodge</title>
+    <title>Fun Zone - Tiny Animal Farm</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="game.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -42,33 +42,22 @@
     </div>
 
     <div class="game-container">
-        <h1 class="game-title">Cosmic Dodge</h1>
-        <p class="game-subtitle">Navigate your glowing orb through the asteroid field. Use your mouse or orbit!<br>Don't
-            hit the red asteroids!</p>
+        <h1 class="game-title">Tiny Animal Farm</h1>
+        <p class="game-subtitle">Click anywhere in the pasture to adopt a new friend!<br>Watch them wander around and
+            enjoy their life.</p>
 
-        <div id="canvas-container">
-            <canvas id="gameCanvas"></canvas>
-            <div id="ui-layer">
-                <div id="start-screen">
-                    <h2>Ready to Launch?</h2>
-                    <p>Move mouse to control</p>
-                    <button id="start-btn">Start Mission</button>
-                </div>
-                <div id="game-over-screen" style="display: none;">
-                    <h2>Mission Failed</h2>
-                    <p>Score: <span id="final-score">0</span></p>
-                    <button id="restart-btn">Try Again</button>
-                </div>
-                <div id="hud">
-                    Score: <span id="score">0</span>
-                </div>
-            </div>
+        <div id="farm-area">
+            <div id="instruction-overlay">Click to add animals! 🐾</div>
+        </div>
+
+        <div class="controls">
+            <button id="clear-btn">Clear Farm</button>
         </div>
     </div>
 
     <script src="game.js"></script>
     <script>
-        /* Mobile Menu Toggle Logic (Same as other pages) */
+        /* Mobile Menu Toggle Logic */
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
@@ -79,7 +68,6 @@
 
         menuToggle.addEventListener('click', toggleMenu);
 
-        // allow keyboard activation (space/enter) for accessibility
         menuToggle.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();

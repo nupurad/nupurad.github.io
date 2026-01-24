@@ -1,231 +1,98 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const farmArea = document.getElementById('farm-area');
+const clearBtn = document.getElementById('clear-btn');
+const animals = ['🐈', '🐕', '🐿️', '🐑', '🐇', '🐢', '🦆', '🐖'];
+let activeAnimals = [];
 
-// UI Elements
-const startScreen = document.getElementById('start-screen');
-const gameOverScreen = document.getElementById('game-over-screen');
-const scoreEl = document.getElementById('score');
-const finalScoreEl = document.getElementById('final-score');
-const startBtn = document.getElementById('start-btn');
-const restartBtn = document.getElementById('restart-btn');
+// Spawn animal on click
+farmArea.addEventListener('click', (e) => {
+    // If clicking on an animal (which bubbles up), don't spawn a new one, maybe interact?
+    // Actually let's just spawn always for chaos, unless we want to drag/pet.
+    // For simplicity, spawn wherever clicked.
 
-// Game State
-let animationId;
-let score = 0;
-let gameSpeed = 3;
-let isGameRunning = false;
-let frames = 0;
+    const rect = farmArea.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-// Set canvas size
-function resizeCanvas() {
-    // Use parent container dimensions
-    const container = document.getElementById('canvas-container');
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Player
-const player = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    radius: 12,
-    color: 'rgb(0, 179, 134)',
-    history: [], // Trail
-    speed: 0.1 // lerp factor
-};
-
-// Mouse/Touch tracking
-const mouse = {
-    x: canvas.width / 2,
-    y: canvas.height / 2
-};
-
-canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    spawnAnimal(x, y);
 });
 
-canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.touches[0].clientX - rect.left;
-    mouse.y = e.touches[0].clientY - rect.top;
-}, { passive: false });
+function spawnAnimal(x, y) {
+    const type = animals[Math.floor(Math.random() * animals.length)];
+    const animalEl = document.createElement('div');
+    animalEl.classList.add('animal');
+    animalEl.textContent = type;
 
-// Obstacles
-let obstacles = [];
-const obstacleColors = ['#ff4444', '#ff8800', '#ff0055'];
+    // Initial Position
+    animalEl.style.left = x + 'px';
+    animalEl.style.top = y + 'px';
 
-class Obstacle {
-    constructor() {
-        this.radius = Math.random() * 15 + 10;
-        this.x = canvas.width + this.radius; // Spawn off screen right
-        this.y = Math.random() * canvas.height;
-        this.speed = Math.random() * 2 + gameSpeed;
-        this.color = obstacleColors[Math.floor(Math.random() * obstacleColors.length)];
-        this.angle = 0;
-        this.spin = Math.random() * 0.1 - 0.05;
-    }
+    // Add animation class for visual feedback
+    animalEl.classList.add('bounce');
+    setTimeout(() => animalEl.classList.remove('bounce'), 500);
 
-    update() {
-        this.x -= this.speed;
-        this.angle += this.spin;
-    }
+    farmArea.appendChild(animalEl);
 
-    draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.fillStyle = this.color;
+    const animalObj = {
+        el: animalEl,
+        width: 40, // approx
+        height: 40
+    };
 
-        // Draw asteroid shape (rough polygon)
-        ctx.beginPath();
-        ctx.moveTo(this.radius, 0);
-        for (let i = 0; i < 7; i++) {
-            const angle = (Math.PI * 2 * i) / 7;
-            const r = this.radius * (0.8 + Math.random() * 0.4); // Jaggedness won't animate per frame here properly without storing it, keeping simple circle for collision but jagged drawing would be better if stored.
-            // Simplified: Draw a hexagon/n-gon
-            ctx.lineTo(Math.cos(angle) * this.radius, Math.sin(angle) * this.radius);
-        }
-        ctx.closePath();
-        ctx.fill();
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = this.color;
-        ctx.stroke();
+    activeAnimals.push(animalObj);
 
-        ctx.restore();
-    }
+    // Start wandering behavior
+    startWandering(animalObj);
 }
 
-// Particles (Stars/Dust)
-let particles = [];
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2;
-        this.speed = Math.random() * 0.5 + 0.1;
-    }
-    update() {
-        this.x -= this.speed * (gameSpeed * 0.5);
-        if (this.x < 0) {
-            this.x = canvas.width;
-            this.y = Math.random() * canvas.height;
-        }
-    }
-    draw() {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
+function startWandering(animal) {
+    // Random movement loop
+    const move = () => {
+        // Check if animal still exists
+        if (!animal.el.isConnected) return;
 
-// Background init
-for (let i = 0; i < 50; i++) particles.push(new Particle());
+        // Pick random destination within bounds
+        // Padding to keep inside
+        const padding = 30;
+        const maxX = farmArea.clientWidth - padding;
+        const maxY = farmArea.clientHeight - padding;
 
-function initGame() {
-    score = 0;
-    gameSpeed = 3;
-    obstacles = [];
-    player.x = canvas.width / 4; // Start left-ish
-    player.y = canvas.height / 2;
-    mouse.x = canvas.width / 4;
-    mouse.y = canvas.height / 2;
-    frames = 0;
-    scoreEl.textContent = 0;
-    isGameRunning = true;
+        const nextX = Math.max(padding, Math.random() * maxX);
+        const nextY = Math.max(padding, Math.random() * maxY);
 
-    startScreen.style.display = 'none';
-    gameOverScreen.style.display = 'none';
+        // Calculate duration based on distance to keep speed roughly constant (optional, or just random speed)
+        // Simple random duration 2-5s
+        const duration = 2000 + Math.random() * 3000;
 
-    animate();
-}
+        animal.el.style.transition = `top ${duration}ms linear, left ${duration}ms linear`;
+        animal.el.style.left = nextX + 'px';
+        animal.el.style.top = nextY + 'px';
 
-function gameOver() {
-    isGameRunning = false;
-    cancelAnimationFrame(animationId);
-    finalScoreEl.textContent = score;
-    gameOverScreen.style.display = 'block';
-}
-
-function animate() {
-    if (!isGameRunning) return;
-    animationId = requestAnimationFrame(animate);
-    frames++;
-
-    // Clear Canvas
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; // Trails effect
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Background Particles
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-
-    // Player Movement (Lerp for smooth follow)
-    player.x += (mouse.x - player.x) * 0.1;
-    player.y += (mouse.y - player.y) * 0.1;
-
-    // Player Trail
-    player.history.push({ x: player.x, y: player.y });
-    if (player.history.length > 10) player.history.shift();
-
-    // Draw Trail
-    ctx.beginPath();
-    for (let i = 0; i < player.history.length; i++) {
-        const p = player.history[i];
-        ctx.lineTo(p.x, p.y);
-    }
-    ctx.strokeStyle = `rgba(0, 179, 134, 0.5)`;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Draw Player
-    ctx.beginPath();
-    ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-    ctx.fillStyle = player.color;
-    ctx.fill();
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = player.color;
-
-    // Manage Obstacles
-    // Spawn
-    if (frames % 60 === 0) {
-        obstacles.push(new Obstacle());
-        score++;
-        scoreEl.textContent = score;
-        // Increase difficulty
-        if (score % 10 === 0) gameSpeed += 0.5;
-    }
-
-    // Update & Draw Obstacles
-    for (let i = obstacles.length - 1; i >= 0; i--) {
-        const ob = obstacles[i];
-        ob.update();
-        ob.draw();
-
-        // Remove off-screen
-        if (ob.x + ob.radius < 0) {
-            obstacles.splice(i, 1);
-            continue;
+        // Face the direction?
+        // Current pos:
+        const currentX = parseFloat(animal.el.style.left) || 0;
+        if (nextX < currentX) {
+            animal.el.style.transform = 'translate(-50%, -50%) scaleX(-1)'; // Face left
+        } else {
+            animal.el.style.transform = 'translate(-50%, -50%) scaleX(1)'; // Face right
         }
 
-        // Collision Detection
-        const dx = player.x - ob.x;
-        const dy = player.y - ob.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        // Wait for move to finish + random pause
+        setTimeout(move, duration + Math.random() * 2000);
+    };
 
-        if (distance < player.radius + ob.radius) {
-            gameOver();
-        }
-    }
+    // Initial slight delay before first move
+    setTimeout(move, 500 + Math.random() * 1000);
 }
 
-// Event Listeners
-startBtn.addEventListener('click', initGame);
-restartBtn.addEventListener('click', initGame);
+// Clear button
+clearBtn.addEventListener('click', () => {
+    const allAnimals = document.querySelectorAll('.animal');
+    allAnimals.forEach(el => el.remove());
+    activeAnimals = [];
+});
+
+// Window resize handling - optional cleanup if needed, but CSS handles containment mostly.
+window.addEventListener('resize', () => {
+    // Ensure animals aren't lost off screen if resized down?
+    // They might be momentarily until they move again.
+});
