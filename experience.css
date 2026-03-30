@@ -18,7 +18,7 @@ body {
 }
 
 .heading h1:hover {
-    color: rgb(0, 179, 134);
+    color: #1EA997;
 }
 
 .timeline {
@@ -93,7 +93,7 @@ body {
     position: absolute;
     width: 6px;
     height: 100%;
-    background: rgb(0, 179, 134);
+    background: #1EA997;
     top: 0;
     left: 50%;
     margin-top: -3px;
@@ -133,7 +133,7 @@ body {
     z-index: 1;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 15px solid rgb(0, 179, 134);
+    border-left: 15px solid #1EA997;
     right: -15px;
 }
 
@@ -145,7 +145,7 @@ body {
     z-index: 1;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-right: 15px solid rgb(0, 179, 134);
+    border-right: 15px solid #1EA997;
     left: -15px;
 }
 
@@ -195,7 +195,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgb(0, 179, 134);
+    border-bottom: 2px solid #1EA997;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -209,7 +209,7 @@ body {
 }
 
 .nav-logo:hover {
-    color: rgb(0, 179, 134);
+    color: #1EA997;
 }
 
 .nav-links {
@@ -226,7 +226,7 @@ body {
 }
 
 .nav-links li a:hover {
-    color: rgb(0, 179, 134);
+    color: #1EA997;
 }
 
 .bars {
