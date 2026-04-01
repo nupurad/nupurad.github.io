@@ -9,6 +9,10 @@ body {
   background-color: #000;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .heading {
   text-align: center;
   margin-top: 60px;
@@ -22,22 +26,40 @@ body {
 }
 
 .card-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   justify-content: center;
-  flex-wrap: wrap;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px;
   gap: 30px;
 }
 
-.card-content a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px #1EA997;
+.project-trigger {
+  width: 100%;
+  max-width: 325px;
+  grid-column: span 2;
+  justify-self: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+  color: inherit;
+}
+
+.project-trigger:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.project-trigger:nth-child(5) {
+  grid-column: 4 / span 2;
 }
 
 .card {
   width: 100%;
-  max-width: 325px;
-  height: 550px;
+  height: 290px;
   background-color: #111;
   border: 2px solid #1EA997;
   border-radius: 8px;
@@ -45,6 +67,13 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-trigger:hover .card,
+.project-trigger:focus-visible .card {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(30, 169, 151, 0.28);
 }
 
 .card img {
@@ -73,6 +102,10 @@ body {
 .card-content {
   padding: 16px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 .card-content h5 {
@@ -82,26 +115,109 @@ body {
   color: #000;
   padding: 10px;
   border-radius: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-.card-content p {
-  color: #ccc;
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: justify;
-
-  /* Allow natural height expansion */
-  height: auto;
-  overflow: visible;
-  padding-right: 0;
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
-/* Optional: Remove scrollbar styling in case it lingers from earlier */
-.card-content p::-webkit-scrollbar {
+.project-modal[hidden] {
   display: none;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.project-modal-panel {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  background: #050505;
+  border: 2px solid #1EA997;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.project-modal-body {
+  padding: 34px 28px 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.project-modal-body h2 {
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  text-align: center;
+  margin: 0;
+}
+
+.project-modal-body p {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.project-modal-description {
+  margin-bottom: 18px;
+}
+
+.project-modal-skills {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.project-skill {
+  border: 1px solid rgba(30, 169, 151, 0.4);
+  border-radius: 999px;
+  padding: 9px 10px;
+  text-align: center;
+  color: #fff;
+  background: rgba(30, 169, 151, 0.08);
+  font-size: 0.92rem;
+}
+
+.project-modal-source {
+  margin: 0;
+}
+
+.project-modal-source a {
+  color: #1EA997;
+  text-decoration: none;
+}
+
+.project-modal-source a:hover {
+  text-decoration: underline;
 }
 
 nav {
@@ -173,6 +289,22 @@ ul li a:hover {
 
 /* Mobile navigation: show hamburger and hide desktop menu */
 @media screen and (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, minmax(0, 325px));
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .project-trigger {
+    grid-column: auto;
+  }
+
+  .project-trigger:nth-child(4),
+  .project-trigger:nth-child(5) {
+    grid-column: auto;
+  }
+
   ul {
     display: none;
     /* hide desktop menu */
@@ -212,5 +344,28 @@ ul li a:hover {
 
   .nav-logo {
     left: 6%;
+  }
+
+  .project-modal-body {
+    padding: 22px 18px 20px;
+  }
+
+  .project-modal-body h2 {
+    text-align: left;
+    font-size: 1.45rem;
+  }
+
+  .project-modal-body p {
+    font-size: 0.95rem;
+  }
+
+  .project-modal-skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .card-container {
+    grid-template-columns: minmax(0, 325px);
   }
 }

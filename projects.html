@@ -31,82 +31,131 @@
         <h1>Projects</h1>
     </div>
     <div class="card-container">
+        <button class="project-trigger" type="button"
+            data-title="SignalOps: Real-time system signals, intelligent insights"
+            data-image="images/signalops.png"
+            data-description="SignalOps is a distributed health-check pipeline for backend endpoints. A producer publishes endpoint tasks to Kafka, multiple consumers perform checks in parallel, and downstream processors store results in TimescaleDB, expose Prometheus metrics, and trigger Slack alerts."
+            data-skills="Kafka,Python,TimeScaleDB,Next.js"
+            data-source="https://github.com/nupurad/SignalOps">
+            <div class="card">
+                <img src="images/signalops.png" alt="SignalOps dashboard">
+                <div class="card-content">
+                    <h5>SignalOps: Real-time system signals, intelligent insights</h5>
+                </div>
+            </div>
+        </button>
 
-        <a href="https://github.com/nupurad/GlobaLens" target="_blank" style="text-decoration: none; color: inherit;">
+        <button class="project-trigger" type="button"
+            data-title="GlobaLens: See Beyond the Headlines"
+            data-image="https://nupurad.github.io/images/globalens.png"
+            data-description="GlobaLens turns the 24-hour news cycle into an interactive global view of real-time events. It combines GDELT data, Vertex AI summaries, and MongoDB Atlas Vector Search to help users explore trends and connections across world news."
+            data-skills="Vertex AI,GDELT,MongoDB Atlas,Data Visualization"
+            data-source="https://github.com/nupurad/GlobaLens">
             <div class="card">
                 <img src="https://nupurad.github.io/images/globalens.png">
                 <div class="card-content">
                     <h5>GlobaLens: See Beyond the Headlines</h5>
-                    <p>
-                        GlobaLens transforms the overwhelming 24-hour news cycle into instant global awareness.
-                        This interactive 3D globe visualizes real-time events from millions of news headlines,
-                        powered by the GDELT dataset. It leverages Vertex AI for bite-sized summaries and MongoDB
-                        Atlas Vector Search for semantic queries, allowing users to uncover connections and trends
-                        not obvious from isolated articles. Developed during the 'AI in Action Google Cloud'
-                        Hackathon, GlobaLens provides powerful, visual insights into world events.
-                    </p>
                 </div>
             </div>
-        </a>
+        </button>
 
-        <a href="https://github.com/nupurad/Agentic-Trip-Planner" target="_blank"
-            style="text-decoration: none; color: inherit;">
+        <button class="project-trigger" type="button"
+            data-title="WanderBot - Your AI-powered Trip Planning Agent"
+            data-image="images/agentic-trip-planner.png"
+            data-description="WanderBot is an AI trip planning agent that assembles complete itineraries in under a minute. It uses LangGraph, FastAPI, and Streamlit with tool-calling workflows, external APIs, and deployment safeguards on AWS."
+            data-skills="LangGraph,FastAPI,Streamlit,AWS"
+            data-source="https://github.com/nupurad/Agentic-Trip-Planner">
             <div class="card">
                 <img src="images/agentic-trip-planner.png">
                 <div class="card-content">
                     <h5>WanderBot - Your AI-powered Trip Planning Agent</h5>
-                    <p>
-                        Developed an AI-powered Trip Planning Agent prototype using LangGraph, FastAPI, and Streamlit,
-                        autonomously generating complete itineraries in less than 60s vs. 30–45min manually. Built a
-                        multi-step agent workflow with tool-calling, external API integration, and hallucination
-                        safeguards,
-                        deploying the backend as a Dockerized service on AWS EC2 with systemd monitoring.
-                    </p>
                 </div>
             </div>
-        </a>
+        </button>
 
-        <a href="https://github.com/nupurad/Stock-ETL" target="_blank" style="text-decoration: none; color: inherit;">
+        <button class="project-trigger" type="button"
+            data-title="Stock Data ETL with Automated Scheduling and Reporting"
+            data-image="images/stockETL.png"
+            data-description="This project automates an end-to-end stock market ETL workflow, from ingestion and feature engineering to warehousing and scheduled reporting. It highlights practical data engineering and automation patterns for repeatable analytics."
+            data-skills="ETL,Automation,Data Engineering,Reporting"
+            data-source="https://github.com/nupurad/Stock-ETL">
             <div class="card">
                 <img src="images/stockETL.png">
                 <div class="card-content">
                     <h5>Stock Data ETL with Automated Scheduling and Reporting</h5>
-                    <p>
-                        Designed and automated an end-to-end ETL pipeline that ingests daily stock market data,
-                        engineers financial features, and stores results in a structured warehouse. Automated
-                        reporting delivers top market insights on schedule, showcasing practical data engineering
-                        and workflow automation skills.
-                    </p>
                 </div>
             </div>
-        </a>
+        </button>
 
-        <a href="https://github.com/nupurad/EchoLens" target="_blank" style="text-decoration: none; color: inherit;">
+        <button class="project-trigger" type="button"
+            data-title="EchoLens: Empowering Digital Accessibility"
+            data-image="https://nupurad.github.io/images/echolens.jpg"
+            data-description="EchoLens is a Chrome extension that describes graph and chart images for visually impaired users. It combines Llama 3.2 Vision, Groq API, and text-to-speech to turn visual content into accessible audio guidance."
+            data-skills="Chrome Extension,Llama 3.2 Vision,Groq API,Accessibility"
+            data-source="https://github.com/nupurad/EchoLens">
             <div class="card">
                 <img src="https://nupurad.github.io/images/echolens.jpg">
                 <div class="card-content">
                     <h5>EchoLens: Empowering Digital Accessibility</h5>
-                    <p>
-                        Developed a Chrome extension tool for visually impaired individuals, that summarizes the
-                        trends presented in image containing graphs/charts on any website, using Llama 3.2 Vision model,
-                        Groq API, Google Text-To-Speech library for conversion to audio description; tool gave
-                        satisfactory results on non-graphical images and can be integrated with existing screen
-                        readers for an elevated experience.
-                    </p>
                 </div>
             </div>
-        </a>
+        </button>
 
     </div>
+
+    <div class="project-modal" id="project-modal" hidden>
+        <div class="project-modal-backdrop" data-close-modal></div>
+        <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+            <button class="project-modal-close" type="button" aria-label="Close project details" data-close-modal>&times;</button>
+            <div class="project-modal-body">
+                <h2 id="project-modal-title"></h2>
+                <p id="project-modal-description"></p>
+                <div class="project-modal-skills" id="project-modal-skills"></div>
+                <p class="project-modal-source">View Source Code:
+                    <a id="project-modal-source" href="" target="_blank" rel="noopener noreferrer">GitHub Link</a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
+        const projectTriggers = document.querySelectorAll('.project-trigger');
+        const projectModal = document.getElementById('project-modal');
+        const projectModalTitle = document.getElementById('project-modal-title');
+        const projectModalDescription = document.getElementById('project-modal-description');
+        const projectModalSkills = document.getElementById('project-modal-skills');
+        const projectModalSource = document.getElementById('project-modal-source');
+        const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
 
         function toggleMenu() {
             const isOpen = navMenu.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function openProjectModal(trigger) {
+            const skills = trigger.dataset.skills.split(',');
+
+            projectModalTitle.textContent = trigger.dataset.title;
+            projectModalDescription.textContent = trigger.dataset.description;
+            projectModalSource.href = trigger.dataset.source;
+            projectModalSkills.innerHTML = '';
+
+            skills.forEach((skill) => {
+                const skillTag = document.createElement('span');
+                skillTag.className = 'project-skill';
+                skillTag.textContent = skill;
+                projectModalSkills.appendChild(skillTag);
+            });
+
+            projectModal.hidden = false;
+            document.body.classList.add('modal-open');
+        }
+
+        function closeProjectModal() {
+            projectModal.hidden = true;
+            document.body.classList.remove('modal-open');
         }
 
         menuToggle.addEventListener('click', toggleMenu);
@@ -116,6 +165,20 @@
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleMenu();
+            }
+        });
+
+        projectTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => openProjectModal(trigger));
+        });
+
+        modalCloseTargets.forEach((target) => {
+            target.addEventListener('click', closeProjectModal);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !projectModal.hidden) {
+                closeProjectModal();
             }
         });
     </script>
