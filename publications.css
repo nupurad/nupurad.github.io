@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 body{
@@ -11,7 +11,7 @@ body{
 
 .heading{
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     margin-top: 60px;
     color: #fff;
     transition: .6s;
@@ -71,7 +71,7 @@ body{
 .card-content small{
     color: #fff;
     font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     text-align: left;
 }
 
@@ -95,7 +95,7 @@ body{
 }
 
 .card-content .read-more{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 15px;
     width: 120px;
     height: 30px;
