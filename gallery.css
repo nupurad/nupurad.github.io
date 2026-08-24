@@ -136,4 +136,52 @@ ul li a:hover {
   display: none;
   position: absolute;
   right: 8%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Mobile navigation ── */
+@media screen and (max-width: 900px) {
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 16px 6%;
+  }
+
+  .nav-logo {
+    left: 6%;
+  }
+
+  ul {
+    display: none;
+    position: absolute;
+    top: 72px;
+    right: 6%;
+    background: #0b0b0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    z-index: 1001;
+  }
+
+  ul.active {
+    display: flex;
+  }
+
+  ul li {
+    margin: 8px 0;
+  }
+
+  .bars {
+    display: block;
+    right: 6%;
+  }
 }

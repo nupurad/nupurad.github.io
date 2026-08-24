@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <link rel="stylesheet" href="gallery.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,14 +15,16 @@
             <div class="nav-logo">
                 <a href="index.html">ND</a>
             </div>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="experience.html">Experience</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
             </ul>
-            <div class="bars"><i class="bx bx-menu"></i></div>
+            <button class="bars" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+              <i class="bx bx-menu" style="color:#fff; font-size: 2rem;"></i>
+            </button>
         </nav>
     </header>
     <div class="text">
@@ -72,6 +75,33 @@
             <img src="gallery_imgs/img12.webp">
         </div>
     </div>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    function toggleMenu() {
+      const isOpen = navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
